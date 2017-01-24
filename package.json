@@ -14,5 +14,17 @@
   "dependencies": {
     "body-parser": "1.13.1",
     "express": "4.13.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaafar50/DemoApp.git"
+  },
+  "keywords": [
+    "DemoApp"
+  ],
+  "bugs": {
+    "url": "https://github.com/jaafar50/DemoApp/issues"
+  },
+  "homepage": "https://github.com/jaafar50/DemoApp#readme"
 }
