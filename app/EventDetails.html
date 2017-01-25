@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="/css/app.css"/>
 </head>
-<body>
+<body ng-cloak>
 <div class ="container">
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -17,16 +17,17 @@
 		</div>
 	</div>
 	<div ng-controller="EventController" style="padding-left:20px; padding-right:20px">
-	<img ng-src="{{event.imageUrl}}" alt="{{event.name}}"/>
+	<img ng-show ="boolValue" ng-src="{{event.imageUrl}}" alt="{{event.name}}"/>
+	<!-- <img ng-hide ="boolValue" ng-src="{{event.imageUrl}}" alt="{{event.name}}"/> -->
 	<div class ="row">
 		<div class="spann11">
-			<h2>{{event.name}}</h2>
+			<h2 ng-style="mystyle">{{event.name}}</h2>
 			<br />
 		</div>
 	</div>
 	<div class ="row">
 		<div class="span3">
-			<div><strong>Date:</strong> {{event.date}}</div>
+			<div><strong>Date:</strong> {{event.date | date:'medium'}}</div>
 			<div><strong>Heure:</strong> {{event.time}}</div>
 		</div>
 		<div class="span4">
@@ -40,8 +41,39 @@
 
 	<hr />
 	<h3>Sessions</h3>
+	<table style="width:100%">
+	<tr>
+	<td>
+	Ordonner par :<br/><br/>
+	<select ng-model="sortorder" class="input-medium">
+		<option selected value="name">Nom de la session</option>
+		<option value="-upVoteCount">Nombre de participants</option>
+		<option value="price">Prix</option>
+		<!-- <option value="level">Niveau</option>
+		<option value="coach">coach sportif</option> -->
+	</select> <br/><br/>
+	</td>
+	<td>
+	Filtrer par niveau :<br/><br/>
+	<select ng-model="query.level" class="input-medium">
+		<option selected value="">Tous les niveaux</option>
+		<option value="débutant">Débutant</option>
+		<option value="professionnel">Professionnel</option>
+	</select> <br/><br/>
+	</td>
+	<td>
+	Filtrer par coach :<br/><br/>
+	<select ng-model="query.coach" class="input-medium">
+		<option selected value="">Tous les coachs</option>
+		<option value="assane">Assane Thiam</option>
+		<option value="tarik">Tarik Yacoubi</option>
+	</select> <br/><br/>
+	</td>
+	</tr>
+	</table>
+
 	<ul class="thumbnails">
-		<li ng-repeat="session in event.sessions">
+		<li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query">
 				
 				<div class="row session">
 						<div class="span0 well votingWidget">
@@ -60,6 +92,7 @@
 							<h6 style="margin-top:-10px">Coach : {{session.coach}}</h6>
 							<span>Durée : {{session.duration}}</span><br/>
 							<span>Niveau : {{session.level}}</span><br/>
+							<span>Prix: {{session.price | currency : "€"}}</span><br/>
 							<p>{{session.abstract}}</p>
 						</div>
 				</div>
@@ -74,8 +107,10 @@
 <script src="/lib/underscore-1.4.4.min.js" ></script>
 <script src="/lib/bootstrap.min.js" ></script>
 <script src="/lib/angular/angular.js" ></script>
+<script src="/lib/angular/angular-sanitize.js" ></script>
 <script src="/js/app.js" ></script>
 <script src="/js/controllers/EventController.js" ></script>
+
 
 </body>
 </html>
