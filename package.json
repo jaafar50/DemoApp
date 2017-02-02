@@ -3,28 +3,22 @@
   "version": "1.0.0",
   "description": "This project is a sample application demonstrating a more fully developed realistic single page angular application.",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Joe Eames & Jim Cooper",
-  "license": "ISC",
   "dependencies": {
+    "jasmine-core": "2.3.4",
+    "karma": "0.12.37",
+    "karma-jasmine": "0.3.6",
+    "karma-ng-html2js-preprocessor": "0.1.2",
+    "karma-chrome-launcher": "0.2.0",
     "body-parser": "1.13.1",
     "express": "4.13.0"
   },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jaafar50/DemoApp.git"
+  "devDependencies": {
+
   },
-  "keywords": [
-    "DemoApp"
-  ],
-  "bugs": {
-    "url": "https://github.com/jaafar50/DemoApp/issues"
+  "scripts": {
+    "test": "karma start test/karma.conf.js",
+	"start": "node scripts/web-server.js"
   },
-  "homepage": "https://github.com/jaafar50/DemoApp#readme"
+  "author": "",
+  "license": "ISC"
 }

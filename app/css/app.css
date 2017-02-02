@@ -29,9 +29,8 @@ select, textarea {
   cursor:pointer;
 }
 
-.sessionThumbnail {
-    height:100%;
-    overflow: hidden;
+.blue {
+  color:blue;
 }
 
 
@@ -74,8 +73,4 @@ select, textarea {
     top: -7px;
     left: 209px;
     background-color: #272b30;
-}
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none;
 }
